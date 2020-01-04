@@ -3,35 +3,17 @@ package org.k.ratingapp.model;
 import java.time.Instant;
 
 public class Rating {
-  private Long id;
-  private Product product;
-  private User user;
+  private String userId;
   private Integer rating;
   private Instant createdAt;
   private Instant updatedAt;
 
-  public Long getId() {
-    return id;
+  public String getUserId() {
+    return userId;
   }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Product getProduct() {
-    return product;
-  }
-
-  public void setProduct(Product product) {
-    this.product = product;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
+  public void setUser(String userId) {
+    this.userId = userId;
   }
 
   public Integer getRating() {

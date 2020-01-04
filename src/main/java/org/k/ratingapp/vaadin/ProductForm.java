@@ -1,4 +1,4 @@
-package org.k.ratingapp;
+package org.k.ratingapp.vaadin;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -11,6 +11,7 @@ import com.vaadin.flow.data.converter.StringToLongConverter;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.k.ratingapp.model.Product;
+import org.k.ratingapp.service.ProductService;
 
 @SpringComponent
 @UIScope

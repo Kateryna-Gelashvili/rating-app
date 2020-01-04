@@ -1,4 +1,4 @@
-package org.k.ratingapp;
+package org.k.ratingapp.vaadin;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -8,6 +8,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 import org.k.ratingapp.model.Product;
+import org.k.ratingapp.service.ProductService;
 
 @Route
 public class MainView extends VerticalLayout {

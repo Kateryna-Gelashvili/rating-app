@@ -1,15 +1,29 @@
 package org.k.ratingapp.model;
 
-import java.time.Instant;
-import java.util.Set;
+import com.querydsl.core.annotations.QueryEntity;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
+import java.util.List;
+
+@QueryEntity
+@Document(collection = "product")
 public class Product {
-  private Long id;
+  @Transient public static final String SEQUENCE_NAME = "product_sequence";
+
+  @Id private Long id;
+
+  @Indexed(direction = IndexDirection.ASCENDING)
   private String title;
+
   private String description;
   private Instant createdAt;
   private Instant updatedAt;
-  private Set<Rating> ratings;
+  private List<Rating> ratings;
 
   public Long getId() {
     return id;
@@ -51,11 +65,11 @@ public class Product {
     this.updatedAt = updatedAt;
   }
 
-  public Set<Rating> getRatings() {
+  public List<Rating> getRatings() {
     return ratings;
   }
 
-  public void setRatings(Set<Rating> ratings) {
+  public void setRatings(List<Rating> ratings) {
     this.ratings = ratings;
   }
 }

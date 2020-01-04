@@ -28,6 +28,7 @@ public abstract class AbstractViewTest extends ParallelTest {
   private static final int SERVER_PORT = 8080;
   /** Property set to true when running on a test hub. */
   private static final String USE_HUB_PROPERTY = "test.use.hub";
+
   private final String route;
   private final By rootSelector;
   @Rule public ScreenshotOnFailureRule rule = new ScreenshotOnFailureRule(this, false);
