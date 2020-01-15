@@ -1,22 +1,29 @@
-package org.k.ratingapp.model;
-
-import org.springframework.data.mongodb.core.mapping.DBRef;
+package org.k.ratingapp.dto;
 
 import java.time.Instant;
 
-public class Rating {
-  @DBRef private User user;
+public class RatingDto {
+  private String userId;
+  private String userName;
   private Integer rating;
   private String comment;
   private Instant createdAt;
   private Instant updatedAt;
 
-  public User getUser() {
-    return user;
+  public String getUserId() {
+    return userId;
   }
 
-  public void setUser(User user) {
-    this.user = user;
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 
   public Integer getRating() {

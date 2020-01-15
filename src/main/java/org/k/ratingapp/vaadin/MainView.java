@@ -2,13 +2,18 @@ package org.k.ratingapp.vaadin;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.NativeButton;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.router.Route;
 import org.k.ratingapp.model.Product;
 import org.k.ratingapp.service.ProductService;
+
+import java.util.List;
+import java.util.Map;
 
 @Route
 public class MainView extends VerticalLayout {
@@ -26,6 +31,7 @@ public class MainView extends VerticalLayout {
     productForm.setProduct(null);
     this.productService = productService;
     grid.setColumns("id", "title", "description", "createdAt", "updatedAt");
+    grid.addComponentColumn(this::buildReviewsButton);
     updateList();
     grid.asSingleSelect()
         .addValueChangeListener(event -> productForm.setProduct(grid.asSingleSelect().getValue()));
@@ -49,6 +55,29 @@ public class MainView extends VerticalLayout {
 
     add(toolbar, mainContent);
     setSizeFull();
+  }
+
+  private NativeButton buildReviewsButton(Product product) {
+    NativeButton button = new NativeButton("View Reviews");
+    button.addClickListener(
+        e ->
+            button
+                .getUI()
+                .ifPresent(
+                    ui -> {
+                      QueryParameters queryParameters = getQueryParameters(product);
+                      ui.navigate("ratings", queryParameters);
+                    }));
+    return button;
+  }
+
+  private QueryParameters getQueryParameters(Product product) {
+    return new QueryParameters(
+        Map.of(
+            "productId",
+            List.of(String.valueOf(product.getId())),
+            "productTitle",
+            List.of(product.getTitle())));
   }
 
   public void updateList() {

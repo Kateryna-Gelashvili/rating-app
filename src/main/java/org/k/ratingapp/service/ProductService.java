@@ -20,8 +20,7 @@ public class ProductService {
     if (StringUtils.isEmpty(filterValue)) {
       return productRepository.findAll();
     } else {
-      List<Product> products = productRepository.findByTitleStartingWith(filterValue);
-      return products;
+      return productRepository.findByTitleStartingWith(filterValue);
     }
   }
 

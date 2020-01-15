@@ -11,10 +11,11 @@ import java.time.Instant;
 @QueryEntity
 @Document(collection = "user")
 public class User {
-  @Id
-  private String id;
+  @Id private String id;
+
   @Indexed(direction = IndexDirection.ASCENDING)
   private String name;
+
   private String password;
   private Instant createdAt;
   private Instant updatedAt;

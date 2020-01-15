@@ -21,7 +21,8 @@ public class UserService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) {
     User user = userRepository.findByName(username);
-    return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), getAuthority());
+    return new org.springframework.security.core.userdetails.User(
+        user.getName(), user.getPassword(), getAuthority());
   }
 
   private List<SimpleGrantedAuthority> getAuthority() {
