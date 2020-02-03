@@ -13,7 +13,7 @@ import java.time.Instant;
 public class User {
   @Id private String id;
 
-  @Indexed(direction = IndexDirection.ASCENDING)
+  @Indexed(direction = IndexDirection.ASCENDING, unique = true)
   private String name;
 
   private String password;
